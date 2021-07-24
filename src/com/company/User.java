@@ -1,5 +1,8 @@
 package com.company;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 import java.io.*;
 import java.util.List;
 import java.util.Objects;
@@ -10,6 +13,14 @@ public class User implements Serializable {
     private List<String> answers;
 
     public User(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
         this.nickname = nickname;
     }
 
@@ -29,13 +40,10 @@ public class User implements Serializable {
         this.answers = answers;
     }
 
-    public void saveToFile(String path) {
-        try (ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(path))) {
-            stream.writeObject(this);
-            System.out.println("Written user to the file. (Note: this message is only for testing)");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void saveToFile(String path) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+        objectMapper.writeValue(new File(path), this);
     }
 
     @Override
