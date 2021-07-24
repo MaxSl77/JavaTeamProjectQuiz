@@ -1,9 +1,14 @@
 package com.company;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SequenceWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,6 +16,9 @@ public class User implements Serializable {
     private String nickname;
     private int rating;
     private List<String> answers;
+
+    public User() {
+    }
 
     public User(String nickname) {
         this.nickname = nickname;
@@ -41,9 +49,28 @@ public class User implements Serializable {
     }
 
     public void saveToFile(String path) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-        objectMapper.writeValue(new File(path), this);
+        File file = new File(path);
+        FileWriter fileWriter = new FileWriter(file, true);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+        SequenceWriter seqWriter = mapper.writer().writeValuesAsArray(fileWriter);
+
+        List<User> users;
+        if (file.length() != 0) {
+            // Reading data from the JSON
+            users = Arrays.asList(mapper.readValue(file, User[].class));
+
+            // Deleting file contents
+            BufferedWriter writer = Files.newBufferedWriter(Paths.get(path));
+            writer.write("");
+            writer.flush();
+            // Writing our previously read json data back to the file
+            seqWriter.writeAll(users);
+        }
+
+        // Writing our object
+        seqWriter.write(this);
+        seqWriter.close();
     }
 
     @Override
