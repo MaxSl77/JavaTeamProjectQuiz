@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class User implements Serializable {
     private String nickname;
-    private int bestRating;
+    private int rating;
     private List<String> answers;
 
     public User(String nickname) {
@@ -24,12 +24,12 @@ public class User implements Serializable {
         this.nickname = nickname;
     }
 
-    public int getBestRating() {
-        return bestRating;
+    public int getRating() {
+        return rating;
     }
 
-    public void setBestRating(int bestRating) {
-        this.bestRating = bestRating;
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public List<String> getAnswers() {
@@ -51,11 +51,11 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return bestRating == user.bestRating && Objects.equals(nickname, user.nickname) && Objects.equals(answers, user.answers);
+        return rating == user.rating && Objects.equals(nickname, user.nickname) && Objects.equals(answers, user.answers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nickname, bestRating, answers);
+        return Objects.hash(nickname, rating, answers);
     }
 }
