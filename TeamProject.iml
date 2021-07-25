@@ -10,5 +10,6 @@
     <orderEntry type="library" name="com.fasterxml.jackson.core:jackson-annotations:2.13.0-rc1" level="project" />
     <orderEntry type="library" name="jackson-core-2.13.0-rc1" level="project" />
     <orderEntry type="library" name="jackson-databind-2.13.0-rc1" level="project" />
+    <orderEntry type="library" name="jackson-annotations-2.13.0-rc1" level="project" />
   </component>
 </module>
