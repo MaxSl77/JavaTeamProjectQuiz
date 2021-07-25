@@ -8,11 +8,10 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class User{
+public class User {
     private String nickname;
     private int rating;
     private List<String> answers;
@@ -64,12 +63,24 @@ public class User{
             BufferedWriter writer = Files.newBufferedWriter(Paths.get(path));
             writer.write("");
             writer.flush();
+
+            // This cycle is needed in order to not write multiple same objects
+            boolean isSameUserFound = false;
+            for (int i = 0; i < users.size(); i++) {
+                if (users.get(i).getNickname().equals(this.nickname)) {
+                    users.set(i, this);
+                    isSameUserFound = true;
+                }
+            }
+            if (!isSameUserFound) {
+                seqWriter.write(this);
+            }
             // Writing our previously read json data back to the file
             seqWriter.writeAll(users);
+        } else {
+            // Writing only one our user as the file is empty
+            seqWriter.write(this);
         }
-
-        // Writing our object
-        seqWriter.write(this);
         seqWriter.close();
     }
 
