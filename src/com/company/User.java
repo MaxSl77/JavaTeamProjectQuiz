@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class User implements Serializable {
+public class User{
     private String nickname;
     private int rating;
     private List<String> answers;
