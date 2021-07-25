@@ -70,6 +70,7 @@ public class User {
                 if (users.get(i).getNickname().equals(this.nickname)) {
                     users.set(i, this);
                     isSameUserFound = true;
+                    break;
                 }
             }
             if (!isSameUserFound) {
