@@ -97,8 +97,4 @@ public class User {
     public int hashCode() {
         return Objects.hash(nickname, rating, answers);
     }
-
-    public String toString() {
-        return nickname + "\t\t" + rating + "\n" + getAnswers();
-    }
 }
