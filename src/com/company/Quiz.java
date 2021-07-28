@@ -16,18 +16,19 @@ public class Quiz {
     private List<Question> questions;
     private User player;
 
-    public Quiz(User user) {
+    public Quiz(User user, String questionsDataPath) throws IOException {
         this.player = user;
+        loadQuestions(questionsDataPath);
     }
 
-
-    private void loadQuestions() throws IOException {
-        File file = new File("questions.json");
+    private void loadQuestions(String questionsDataPath) throws IOException {
+        File file = new File(questionsDataPath);
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
         questions = Arrays.asList(objectMapper.readValue(file, Question[].class));
     }
-    private void initQuiz(){
+
+    public void initQuiz(String usersDataPath) throws IOException {
         int counter = 0;
         String userAnswer;
         List <String> userAnswers = new LinkedList<>();
@@ -42,7 +43,7 @@ public class Quiz {
         player.setAnswers(userAnswers);
         player.setRating(counter*10/questions.size());
         scanner.close();
-        player.saveToFile("users.json");
+        player.saveToFile(usersDataPath);
     }
     private boolean checkAnswer(String userAnswer, int i){
         return userAnswer.equals(questions.get(i).getCorrectAnswer());
