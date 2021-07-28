@@ -48,9 +48,11 @@ public class Main {
         for (int i = 0; i < questions.length; i++) {
             System.out.println(questions[i].questionquiz);
             String answer = answerInput.nextLine();
-            if (answer.equals(questions[i].answer));  {
+            if (questions[i].answer.equals(answer)) {
+                System.out.println("Correct answer\n");
                 result++;
             }
+            else System.out.println("Wrong answer\n");
 
         }
         System.out.println("You result "+result+"/"+questions.length);
