@@ -15,20 +15,24 @@ import java.util.Scanner;
 public class Quiz {
     private List<Question> questions;
     private User player;
+    private String questionsDataPath;
+    private String usersDataPath;
 
-    public Quiz(User user, String questionsDataPath) throws IOException {
+    public Quiz(User user, String questionsDataPath, String usersDataPath) throws IOException {
         this.player = user;
-        loadQuestions(questionsDataPath);
+        this.questionsDataPath = questionsDataPath;
+        this.usersDataPath = usersDataPath;
+        loadQuestions();
     }
 
-    private void loadQuestions(String questionsDataPath) throws IOException {
+    private void loadQuestions() throws IOException {
         File file = new File(questionsDataPath);
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
         questions = Arrays.asList(objectMapper.readValue(file, Question[].class));
     }
 
-    public void initQuiz(String usersDataPath) throws IOException {
+    public void initQuiz() throws IOException {
         int counter = 0;
         String userAnswer;
         List <String> userAnswers = new LinkedList<>();
