@@ -12,12 +12,12 @@ import java.util.List;
 public class Leaderboard {
     private List<User> users;
 
-    public Leaderboard(String path) throws IOException {
-        loadLeaderboard(path);
+    public Leaderboard(String usersDataPath) throws IOException {
+        loadLeaderboard(usersDataPath);
     }
 
-    private void loadLeaderboard(String path) throws IOException {
-        File file = new File(path);
+    private void loadLeaderboard(String usersDataPath) throws IOException {
+        File file = new File(usersDataPath);
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
         if (file.length() != 0) {
