@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -14,18 +15,15 @@ import java.util.List;
 
 public class Question {
 
-    String questionquiz;
-    String answer;
+    private String formulation;
+    private String answer;
 
-    private String arrayquestion[];
-    private String arrayanswer[];
-
-    public String getQuestionquiz() {
-        return questionquiz;
+    public String getFormulation() {
+        return formulation;
     }
 
-    public void setQuestionquiz(String questionquiz) {
-        this.questionquiz = questionquiz;
+    public void setFormulation(String formulation) {
+        this.formulation = formulation;
     }
 
     public String getAnswer() {
@@ -36,8 +34,8 @@ public class Question {
         this.answer = answer;
     }
 
-    public Question(String questionquiz, String answer) {
-        this.questionquiz = questionquiz;
+    public Question(String formulation, String answer) {
+        this.formulation = formulation;
         this.answer = answer;
     }
 
@@ -58,10 +56,10 @@ public class Question {
             writer.write("");
             writer.flush();
 
-            // This cycle is needed in order to not write multiple same objects
+            // This cycle is needed to restrict writing multiple same objects
             boolean isSameQuestionFound = false;
-            for (int i = 0; i < question.size(); i++) {
-                if (questions.get(i).getQuestionquiz().equals(this.questionquiz)) {
+            for (int i = 0; i < questions.size(); i++) {
+                if (questions.get(i).getFormulation().equals(this.formulation)) {
                     questions.set(i, this);
                     isSameQuestionFound = true;
                     break;
@@ -71,7 +69,7 @@ public class Question {
                 seqWriter.write(this);
             }
             // Writing our previously read json data back to the file
-            seqWriter.writeAll(users);
+            seqWriter.writeAll(questions);
         } else {
             // Writing only one our user as the file is empty
             seqWriter.write(this);
