@@ -18,6 +18,13 @@ public class Question {
     private String formulation;
     private String answer;
 
+    public Question() {}
+
+    public Question(String formulation, String answer) {
+        this.formulation = formulation;
+        this.answer = answer;
+    }
+
     public String getFormulation() {
         return formulation;
     }
@@ -31,11 +38,6 @@ public class Question {
     }
 
     public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
-    public Question(String formulation, String answer) {
-        this.formulation = formulation;
         this.answer = answer;
     }
 

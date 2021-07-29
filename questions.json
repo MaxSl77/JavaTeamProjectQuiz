@@ -1,0 +1,31 @@
+[ {
+  "formulation" : "Which keyword is used to create a class in Java?\n a) MyClass\n b) class \n c) className\n d) class()\n",
+  "answer" : "b"
+}, {
+  "formulation" : "Which method can be used to return a string in upper case letters?\n a) touppercase()\n b) upperCase()\n c) tuc()\n d) toUpperCase()\n",
+  "answer" : "d"
+}, {
+  "formulation" : "The value of a string variable can be surrounded by single quotes. (Yes or No) \n",
+  "answer" : "no"
+}, {
+  "formulation" : "Which method can be used to find the length of a string?\n a) getLength()\n b) length()\n c) getSize()\n d) len()\n",
+  "answer" : "b"
+}, {
+  "formulation" : "How do you create a variable with the floating number 2.8?\n a) byte x = 2.8f\n b) x = 2.8f;\n c) float x = 2.8f;\n d) int x = 2.8f;\n",
+  "answer" : "c"
+}, {
+  "formulation" : "How do you create a variable with the numeric value 5?\n a) int x = 5;\n b) num x = 5\n c) x = 5;\n d) float x = 5;\n",
+  "answer" : "a"
+}, {
+  "formulation" : "Which data type is used to create a variable that should store text?\n a) string\n b) String\n c) myString\n d) Txt\n",
+  "answer" : "b"
+}, {
+  "formulation" : "How do you insert COMMENTS in Java code?\n a) // This is a comment\n b) # This is a comment\n c) /* This is a comment\n",
+  "answer" : "a"
+}, {
+  "formulation" : "Java is short for \"JavaScript\" (Yes or No)?\n",
+  "answer" : "no"
+}, {
+  "formulation" : "What is a correct syntax to output \"Hello World\" in Java?\n a) \n print (\"Hello World\");b) Console.WriteLine(\"Hello World\");\n c) echo(\"Hello World\");\n d) System.out.println(\"Hello World\");",
+  "answer" : "d"
+} ]
