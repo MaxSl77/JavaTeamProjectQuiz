@@ -40,6 +40,7 @@ public class Quiz {
         for (int i = 0; i < questions.size(); i++) {
             System.out.println(i + " question:\n " + questions.get(i).getFormulation());
             userAnswer = scanner.nextLine();
+            userAnswer.toLowerCase();
             userAnswers.add(i,userAnswer);
             if (checkAnswer(userAnswer,i))
                 counter++;
