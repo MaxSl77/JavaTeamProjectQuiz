@@ -50,7 +50,7 @@ public class Quiz {
         player.saveToFile(usersDataPath);
     }
     private boolean checkAnswer(String userAnswer, int i){
-        return userAnswer.equals(questions.get(i).getCorrectAnswer());
+        return userAnswer.equals(questions.get(i).getAnswer());
     }
 
 }
