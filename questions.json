@@ -26,6 +26,6 @@
   "formulation" : "Java is short for \"JavaScript\" (Yes or No)?\n",
   "answer" : "no"
 }, {
-  "formulation" : "What is a correct syntax to output \"Hello World\" in Java?\n a) \n print (\"Hello World\");b) Console.WriteLine(\"Hello World\");\n c) echo(\"Hello World\");\n d) System.out.println(\"Hello World\");",
+  "formulation" : "What is a correct syntax to output \"Hello World\" in Java?\n a) print (\"Hello World\");\n b) Console.WriteLine(\"Hello World\");\n c) echo(\"Hello World\");\n d) System.out.println(\"Hello World\");\n",
   "answer" : "d"
 } ]

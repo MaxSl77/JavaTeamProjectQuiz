@@ -11,19 +11,15 @@ public class QuizGame {
         quiz = new Quiz(player, questionsDataPath, usersDataPath);
     }
 
-    public int printMenu() {
-        return 0;
-    }
-
-    private void startGame() throws IOException {
+    public void startGame() throws IOException {
         quiz.initQuiz();
     }
 
-    public void printLeaderboard() {
+    public void printLeaderboard() throws IOException {
         leaderboard.printLeaderboard();
     }
 
-    public void printUserInfo(String nickname) {
+    public void printUserInfo(String nickname) throws IOException {
         leaderboard.printUserInfo(nickname);
     }
 }

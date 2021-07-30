@@ -5,12 +5,9 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
+import static com.company.Main.scanner;
 
 public class Quiz {
     private List<Question> questions;
@@ -36,9 +33,8 @@ public class Quiz {
         int counter = 0;
         String userAnswer;
         List <String> userAnswers = new LinkedList<>();
-        Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < questions.size(); i++) {
-            System.out.println(i + " question:\n " + questions.get(i).getFormulation());
+            System.out.print("\n" + (i + 1) + " question:\n " + questions.get(i).getFormulation());
             userAnswer = scanner.nextLine();
             userAnswer = userAnswer.toLowerCase();
             userAnswers.add(i,userAnswer);
@@ -47,9 +43,9 @@ public class Quiz {
         }
         player.setAnswers(userAnswers);
         player.setRating(counter*10/questions.size());
-        scanner.close();
         player.saveToFile(usersDataPath);
     }
+
     private boolean isUserAnswerCorrect(String userAnswer, int i){
         return userAnswer.equals(questions.get(i).getAnswer());
     }
