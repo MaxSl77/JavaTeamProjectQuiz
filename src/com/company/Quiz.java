@@ -41,7 +41,7 @@ public class Quiz {
             System.out.println(i + " question:\n " + questions.get(i).getFormulation());
             userAnswer = scanner.nextLine();
             userAnswers.add(i,userAnswer);
-            if (checkAnswer(userAnswer,i))
+            if (isUserAnswerCorrect(userAnswer,i))
                 counter++;
         }
         player.setAnswers(userAnswers);
@@ -49,8 +49,9 @@ public class Quiz {
         scanner.close();
         player.saveToFile(usersDataPath);
     }
-    private boolean checkAnswer(String userAnswer, int i){
-        return userAnswer.equals(questions.get(i).getCorrectAnswer());
+
+    private boolean isUserAnswerCorrect(String userAnswer, int i){
+        return userAnswer.equals(questions.get(i).getAnswer());
     }
 
 }

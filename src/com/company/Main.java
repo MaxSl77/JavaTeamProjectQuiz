@@ -1,10 +1,26 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        User user;
+        System.out.println("Please enter your nickname:");
+        user = new User(scanner.nextLine());
+        try {
+            QuizGame quiz = new QuizGame(user, "users.json", "questions.json");
+            while (true) {
+                if (quiz.printMenu() == 0) {
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
 //        String q1 = "What is a correct syntax to output \"Hello World\" in Java?\n" + " a) \n print (\"Hello World\");" +
 //                "b) Console.WriteLine(\"Hello World\");\n c) echo(\"Hello World\");\n d) System.out.println(\"Hello World\");";

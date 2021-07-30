@@ -11,7 +11,11 @@ public class QuizGame {
         quiz = new Quiz(player, questionsDataPath, usersDataPath);
     }
 
-    public void startGame() throws IOException {
+    public int printMenu() {
+        return 0;
+    }
+
+    private void startGame() throws IOException {
         quiz.initQuiz();
     }
 
